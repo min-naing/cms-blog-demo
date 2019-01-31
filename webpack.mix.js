@@ -16,10 +16,10 @@ mix.styles([
     'public/vendor/fontawesome-free/css/all.css',
     'public/vendor/datatables/dataTables.bootstrap4.css',
     'public/css/sb-admin.css',
-], 'public/css/all.css')
+], 'public/css/admin-all.css')
     .scripts([
         'public/vendor/jquery/jquery.js',
         'public/vendor/bootstrap/js/bootstrap.bundle.js',
         'public/vendor/jquery-easing/jquery.easing.js',
         'public/js/sb-admin.js'
-    ], 'public/js/all.js');
+    ], 'public/js/admin-all.js');

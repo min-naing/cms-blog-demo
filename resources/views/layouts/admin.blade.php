@@ -15,7 +15,7 @@
     <!-- Custom fonts for this template-->
     <!-- Page level plugin CSS-->
     <!-- Custom styles for this template-->
-    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin-all.css') }}" rel="stylesheet">
 
 </head>
 
@@ -136,7 +136,7 @@
 <!-- Bootstrap core JavaScript-->
 <!-- Core plugin JavaScript-->
 <!-- Custom scripts for all pages-->
-<script src="{{ asset('js/all.js') }}"></script>
+<script src="{{ asset('js/admin-all.js') }}"></script>
 
 </body>
 
