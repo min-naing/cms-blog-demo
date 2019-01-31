@@ -12,14 +12,14 @@ const mix = require('laravel-mix');
  */
 
 mix.styles([
-    'vendor/bootstrap/css/bootstrap.css',
-    'vendor/fontawesome-free/css/all.css',
-    'vendor/datatables/dataTables.bootstrap4.css',
+    'public/vendor/bootstrap/css/bootstrap.css',
+    'public/vendor/fontawesome-free/css/all.css',
+    'public/vendor/datatables/dataTables.bootstrap4.css',
     'public/css/sb-admin.css',
 ], 'public/css/all.css')
     .scripts([
-        'vendor/jquery/jquery.js',
-        'vendor/bootstrap/js/bootstrap.bundle.js',
-        'vendor/jquery-easing/jquery.easing.js',
+        'public/vendor/jquery/jquery.js',
+        'public/vendor/bootstrap/js/bootstrap.bundle.js',
+        'public/vendor/jquery-easing/jquery.easing.js',
         'public/js/sb-admin.js'
     ], 'public/js/all.js');
