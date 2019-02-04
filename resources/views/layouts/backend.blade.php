@@ -57,13 +57,13 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{ url('admin/users') }}" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="{{ route('admin.users.index') }}" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Users</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="usersDropdown">
-                <a class="dropdown-item" href="{{ url('admin/users') }}">All Users</a>
-                <a class="dropdown-item" href="{{ url('admin/users') }}">New User</a>
+                <a class="dropdown-item" href="{{ route('admin.users.index') }}">All Users</a>
+                <a class="dropdown-item" href="{{ route('admin.users.create') }}">New User</a>
             </div>
         </li>
         <li class="nav-item">

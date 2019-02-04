@@ -18,13 +18,20 @@ Route::get('contact', 'PagesController@contact');
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', function() {
-        return view('backend.index');
-    });
+Route::resource('users', 'Admin\UsersController');
 
-    Route::name('admin.')->group(function() {
-        Route::resource('users', 'UsersController');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+
+    Route::get('/afa', function() {
+        return view('backend.index');
+    })->name('index');
+
+    Route::name('users.')->group(function() {
+        Route::get('users', 'UsersController@index')->name('index');
+        Route::get('users/create', 'UsersController@create')->name('create');
+        Route::post('users/create', 'UsersController@store')->name('store');
+        Route::get('users/{id}/edit', 'UsersController@edit')->name('edit');
+        Route::match(['put', 'patch'], 'users/{id}', 'UsersController@update')->name('update');
     });
 
 });
