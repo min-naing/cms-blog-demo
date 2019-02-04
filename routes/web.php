@@ -11,11 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@home');
+Route::get('about', 'PagesController@about');
+Route::get('services', 'PagesController@services');
+Route::get('contact', 'PagesController@contact');
 
-Route::get('/admin', function() {
-    return view('admin.index');
-});
+Auth::routes();
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', function() {
+        return view('backend.index');
+    });
+
+    Route::name('admin.')->group(function() {
+        Route::resource('users', 'UsersController');
+    });
+
+});
