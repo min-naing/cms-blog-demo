@@ -47,6 +47,14 @@
 
                         {!! Form::submit('Update User', ['class' => 'btn btn-primary']) !!}
 
+                        <a href="{{ route('admin.users.destroy', $user->id) }}"
+                           class="btn btn-danger ml-3"
+                            onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Delete User</a>
+
+            {!! Form::close() !!}
+
+            {!! Form::open(['action' => ['Admin\UsersController@destroy', $user->id], 'id' => 'delete-form', 'method' => 'DELETE']) !!}
+
             {!! Form::close() !!}
 
         </div>

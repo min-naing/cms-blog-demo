@@ -9,6 +9,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -43,7 +44,7 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        $user = $this->getCheckingPasswordRequest($request);
+        $input = $request->all();
 
         if( $file = $request->file('photo_id') ) {
 
@@ -53,11 +54,13 @@ class UsersController extends Controller
 
             $photo = Photo::create(['file' => $name]);
 
-            $user['photo_id'] = $photo->id;
+            $input['photo_id'] = $photo->id;
 
         }
 
-        User::create($user);
+        $user = User::create($input);
+
+        Session::flash('primary-status', "User id:{$user->id} has been created.");
 
         return redirect()->route('admin.users.index');
     }
@@ -100,7 +103,7 @@ class UsersController extends Controller
 
         $user = User::findOrFail($id);
 
-        $input = $this->getCheckingPasswordRequest($request);
+        $input = $request->all();
 
         if($file = $request->file('photo_id')) {
 
@@ -117,7 +120,7 @@ class UsersController extends Controller
         $user->update($input);
 //        User::updateOrCreate(['id' => $id], $input);
 
-        return redirect()->route('admin.users.index');
+        return redirect(route('admin.users.index'))->with('info-status', "User id:{$id} has been updated.");
     }
 
     /**
@@ -128,19 +131,17 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::findOrFail($id);
+
+        if( $user->photo )
+            unlink(public_path() . '/images/' . $user->photo->file);
+
+        $user->delete();
+
+        Session::flash('danger-status', "User id:{$id} has been deleted.");
+
+        return redirect()->route('admin.users.index');
     }
 
-    private function getCheckingPasswordRequest(Request $request) {
-
-        if( trim($request->password) == '') {
-            return $request->except('password');
-        }
-        else {
-            $input = $request->all();
-            $input['password'] = bcrypt($input['password']);
-            return $input;
-        }
-
-    }
 }

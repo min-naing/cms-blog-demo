@@ -24,7 +24,6 @@
             <!-- Blog Entries Column -->
             @yield('content')
 
-
         </div>
         <!-- /.row -->
 

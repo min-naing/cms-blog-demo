@@ -7,6 +7,8 @@
     <h2>All Users</h2>
     <hr>
 
+    @include('includes.message-status')
+
     @if($users->isEmpty())
         <p>There is no users.</p>
     @else
