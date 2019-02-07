@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Requests\PostsCreateRequest;
 use App\Photo;
 use App\Post;
@@ -30,7 +31,10 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+
+        $categories = Category::pluck('name', 'id')->toArray();
+
+        return view('backend.posts.create', compact('categories'));
     }
 
     /**
